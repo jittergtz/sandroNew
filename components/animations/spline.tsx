@@ -6,8 +6,8 @@ export default function Spliner() {
       <Spline
         scene="https://prod.spline.design/Hy7ePhl1cCi-0zPT/scene.splinecode" 
       />
-       <div className='w-full h-20  backdrop-blur-md border-t border-neutral-800 absolute bottom-10'></div>
-      <div className='w-full h-12 bg-[#0f0f0f] absolute bottom-0'></div>
+       <div className='w-full h-24  backdrop-blur-md border-t border-neutral-800 absolute bottom-10'></div>
+      <div className='w-full h-20 bg-[#0f0f0f] absolute bottom-0'></div>
     </main>
   );
 }

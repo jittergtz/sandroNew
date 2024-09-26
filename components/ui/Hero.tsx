@@ -5,10 +5,11 @@ function Hero() {
   return (
     <div className='h-[100vh]  flex justify-center items-center w-full relative'>
         <Spliner/>
-        <div className='absolute  top-1/2 left-1/2 -translate-x-1/2 '>
-          <h1 className='backdrop-blur-xl bg-black/10 p-5 rounded-xl text-3xl text-neutral-100'>
-            hey, Sandro here
+        <div className='absolute m-4 p-1 rounded-xl   top-28  '>
+          <h1 className=' rounded-xl text-5xl text-neutral-100/70'>
+            Hey, Sandro here
           </h1>
+          <p>Im a Frontend Engineer with great interest in design. </p>
          </div>
     </div>
   )
