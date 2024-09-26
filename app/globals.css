@@ -25,3 +25,32 @@ body {
     text-wrap: balance;
   }
 }
+
+
+.Scroller {
+  ::-webkit-scrollbar {
+      width: 4px; /* width for vertical scrollbar */
+      height: 12px; /* height for horizontal scrollbar */
+  }
+  
+  /* The track (background of the scrollbar) */
+  ::-webkit-scrollbar-track {
+      background: #1c1c1c00; /* light gray background */
+  }
+  
+  /* The draggable part of the scrollbar */
+  ::-webkit-scrollbar-thumb {
+      background: #343434; /* dark gray thumb */
+      border-radius: 12px; /* rounded edges */
+  }
+  
+  /* When you hover over the scrollbar thumb */
+  ::-webkit-scrollbar-thumb:hover {
+      background: #555; /* darker thumb on hover */
+  }
+  
+  /* Optional: Style for scrollbar when both vertical and horizontal appear */
+  ::-webkit-scrollbar-corner {
+      background: #f1f1f1;
+  }
+}
