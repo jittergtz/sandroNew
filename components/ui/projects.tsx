@@ -102,7 +102,7 @@ export default function Projects() {
     <div className="font-[family-name:var(--font-geist-sans)] p-5 flex justify-center ">
      <div className="w-full max-w-6xl">
           <h2 className="text-3xl mb-7 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-neutral-300 to-neutral-900 sm:text-4xl">
-            Projekte
+            Projects
           </h2>
           <div className="h-[1px] mb-10 w-full bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-900"></div>
     
