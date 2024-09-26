@@ -27,6 +27,18 @@ type ModalProps = {
 function Modal({ onClose, content }: ModalProps) {
   const [showButtons, setShowButtons] = useState(false);
   const placeholder = "https://utfs.io/f/mQNDgQBdulFSYrcfiLGCfIoZlwKa7ObVEykHUeWuxBDidcPr";
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  const handleLoadedData = () => {
+    setLoading(false);
+  };
+
+  const handleError = () => {
+    setLoading(false);
+    setError(true);
+  };
+
 
   return (
     <div className='fixed top-0 inset-0 z-50 flex items-center justify-center bg-black/50 h-screen Scroller bg-opacity-90'>
@@ -47,19 +59,6 @@ function Modal({ onClose, content }: ModalProps) {
         <h2 className="text-lg md:text-3xl text-neutral-200 tracking-tight mb-4">
           {content.title}
         </h2>
-        <Suspense>
-        <video
-              loop
-              muted
-              autoPlay
-              playsInline
-              className='w-full rounded-xl border-neutral-950 h-auto border pointer-events-none'>
-              <source type='video/mp4' src={content.video} />
-            </video>
-         </Suspense>    
-        <p className="text-md md:text-lg mb-3 mt-5 text-gray-300">
-          {content.description}
-          </p>
         <Image
           src={content.img || placeholder}
           width={600}
@@ -67,6 +66,36 @@ function Modal({ onClose, content }: ModalProps) {
           alt="project image"
           className="w-full mb-3 rounded-xl"
         />
+      
+      {loading && !error && (
+        <div className="flex items-center rounded-xl h-40 w-full justify-center">
+          <div className="text-neutral-500">Loading...</div>
+        </div>
+      )}
+      {error ? (
+        <div className="flex items-center justify-center h-full text-neutral-500">
+          Video failed to load
+        </div>
+      ) : (
+        <video
+          loop
+          muted
+          autoPlay
+          playsInline
+          preload="metadata"
+          className="w-full rounded-xl h-auto pointer-events-none"
+          onLoadedData={handleLoadedData}
+          onError={handleError}
+        >
+          <source type="video/mp4" src={content.video} />
+          Your browser does not support the video tag.
+        </video>
+      )}
+         
+        <p className="text-md md:text-lg mb-3 mt-5 text-gray-300">
+          {content.description}
+          </p>
+       
          <p className="text-md mb-5 md:text-lg mt-5 text-gray-300">
           {content.footer}
          </p>
