@@ -4,7 +4,7 @@
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import { projects } from "@/components/projects";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import Button from "./Button";
 import { FiGithub } from "react-icons/fi";
@@ -45,6 +45,17 @@ function Modal({ onClose, content }: ModalProps) {
         <h2 className="text-lg md:text-3xl text-neutral-200 tracking-tight mb-4">
           {content.title}
         </h2>
+        <Suspense>
+        <video
+              loop
+              muted
+              autoPlay
+              playsInline
+              className='w-full rounded-xl border-neutral-950 h-auto border pointer-events-none'>
+              <source type='video/mp4' src={content.video} />
+            </video>
+         </Suspense>    
+        <p className="text-md md:text-lg mt-5 text-gray-300">{content.description}</p>
         <Image
           src={content.img || placeholder}
           width={600}
@@ -52,8 +63,7 @@ function Modal({ onClose, content }: ModalProps) {
           alt="project image"
           className="w-full rounded-xl"
         />
-        <p className="text-md md:text-lg mt-5 text-gray-300">{content.description}</p>
-
+         <p className="text-md md:text-lg mt-5 text-gray-300">{content.footer}</p>
         {showButtons && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}

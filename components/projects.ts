@@ -3,14 +3,18 @@ interface project {
    description: string,
    img: string,
    id: number,
+   video?: string,
+   footer?: string,
 }
 
 export const projects: project[] = [
     {
-      title: "Placeholder",
-      description: "Ein Automobil, kurz Auto (in Deutschland amtlich Kraftfahrzeug, in der Schweiz amtlich Motorwagen), ist ein mehrspuriges motorgetriebenes Straßenfahrzeug zur Beförderung von Personen oder Lasten. Umgangssprachlich nennt man „Auto“ vor allem Fahrzeuge, die zum Transport von Personen bestimmt sind; amtlich werden diese als Personenkraftwagen (kurz: Pkw) bezeichnet, oder – bei mehr Sitzplätzen – als Kraftomnibus. Soll ein Fahrzeug mehrheitlich Güter transportieren, heißt es amtlich „Lastkraftwagen“ (Lkw).Der weltweite Fahrzeugbestand lag im Jahr 2010 bei über 1,015 Milliarden Automobilen und stieg seitdem kontinuierlich an. 2011 wurden weltweit über 80 Millionen Automobile gebaut. In Deutschland waren im Jahr 2012 etwa 51,7 Millionen Kraftfahrzeuge zugelassen, davon sind knapp 43 Millionen Personenkraftwagen.",
+      title: "Project A",
+      description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
       img: "/walli.png",
       id: 1,
+      video: "https://utfs.io/f/19e7054b-9f59-46a5-beac-8e54a333b675-59gbt9.mov",
+      footer: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua"
       
     },
     {
