@@ -1,4 +1,3 @@
-import Spliner from "@/components/animations/spline";
 import Contact from "@/components/ui/contact";
 import Hero from "@/components/ui/Hero";
 import Projects from "@/components/ui/projects";
