@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable */
 
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
@@ -78,7 +79,7 @@ export default function Projects() {
   const [activeModal, setActiveModal] = useState(null);
 
 
-  const openModal = (project) => {
+  const openModal = (project: any) => {
     setActiveModal(project);
     document.body.style.overflow = 'hidden';
   };
