@@ -17,6 +17,8 @@ type ModalProps = {
     title: string;
     img?: string;
     description: string;
+    video?: string;
+    footer?: string;
   };
 };
 
@@ -55,15 +57,19 @@ function Modal({ onClose, content }: ModalProps) {
               <source type='video/mp4' src={content.video} />
             </video>
          </Suspense>    
-        <p className="text-md md:text-lg mt-5 text-gray-300">{content.description}</p>
+        <p className="text-md md:text-lg mb-3 mt-5 text-gray-300">
+          {content.description}
+          </p>
         <Image
           src={content.img || placeholder}
           width={600}
           height={400}
           alt="project image"
-          className="w-full rounded-xl"
+          className="w-full mb-3 rounded-xl"
         />
-         <p className="text-md md:text-lg mt-5 text-gray-300">{content.footer}</p>
+         <p className="text-md mb-5 md:text-lg mt-5 text-gray-300">
+          {content.footer}
+         </p>
         {showButtons && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
