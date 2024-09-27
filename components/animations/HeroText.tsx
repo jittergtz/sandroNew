@@ -3,7 +3,6 @@ import { motion, Variants } from 'framer-motion';
 import React from 'react';
 import { ContactButton, Shiny } from '../ui/Button';
 
-
 interface AnimatedTextProps {
   text: string;
 }
@@ -54,8 +53,22 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({ text }) => {
 };
 
 const HeroText: React.FC = () => {
+  const buttonContainer: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring',
+        damping: 12,
+        stiffness: 100,
+        delay: 0.5, // Add a delay to start the button animation after the text
+      },
+    },
+  };
+
   return (
-    <div className='absolute m-4  p-1 rounded-xl md:left-5 top-28 max-w-full md:max-w-[80%]'>
+    <div className='absolute m-4 p-1 rounded-xl md:left-5 top-28 max-w-full md:max-w-[80%]'>
       <h1 className='rounded-xl md:mb-4 text-5xl md:text-8xl text-neutral-100/70 break-words'>
         <AnimatedText text="Hey Sandro here" />
       </h1>
@@ -63,9 +76,12 @@ const HeroText: React.FC = () => {
         <AnimatedText text="I'm a Frontend Engineer with great interest in design." />
       </div>
       <div className='mt-10 flex flex-col gap-2'>
-      <Shiny/>
-      <ContactButton/>
-   
+        <motion.div variants={buttonContainer} initial="hidden" animate="visible">
+          <Shiny />
+        </motion.div>
+        <motion.div variants={buttonContainer} initial="hidden" animate="visible">
+          <ContactButton />
+        </motion.div>
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
 import { IoMdContact } from 'react-icons/io';
-import { WiStars } from "react-icons/wi";
 
 type ButtonProps = {
     link: string;
