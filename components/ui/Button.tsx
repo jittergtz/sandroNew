@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
+import { IoMdContact } from 'react-icons/io';
+import { WiStars } from "react-icons/wi";
 
 type ButtonProps = {
     link: string;
@@ -18,3 +20,22 @@ function Button({ link, children}: ButtonProps) {
 }
 
 export default Button
+
+
+export function ContactButton() {
+  return (
+    <button className='rounded-xl text-neutral-300 flex justify-center items-center gap-1 bg-neutral-900 max-w-96 w-full p-2.5 border-[1px] border-neutral-800'>
+        Get in touch <IoMdContact className='text-neutral-700' size={22} />
+    </button>
+  )
+}
+
+export function Shiny() {
+  return (
+    <button className='rounded-xl text-neutral-300 flex justify-center items-center gap-1 bg-neutral-900/10 backdrop-blur-2xl max-w-96 w-full p-2.5 border-[1px] border-neutral-900/10'>
+        take a look 
+    </button>
+  )
+}
+
+
