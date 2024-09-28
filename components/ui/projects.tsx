@@ -4,7 +4,7 @@
 import { Card } from "@/components/ui/card";
 import Image from "next/image";
 import { projects } from "@/components/projects";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 import Button from "./Button";
 import { FiGithub } from "react-icons/fi";
@@ -22,23 +22,39 @@ type ModalProps = {
   };
 };
 
-
-
 function Modal({ onClose, content }: ModalProps) {
   const [showButtons, setShowButtons] = useState(false);
   const placeholder = "https://utfs.io/f/mQNDgQBdulFSYrcfiLGCfIoZlwKa7ObVEykHUeWuxBDidcPr";
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  const handleLoadedData = () => {
-    setLoading(false);
-  };
+  useEffect(() => {
+    const loadVideo = async () => {
+      setLoading(true);
+      setError(false);
+      if (videoRef.current) {
+        try {
+          await videoRef.current.load();
+          await videoRef.current.play();
+          setLoading(false);
+        } catch (error) {
+          console.error("Error loading or playing video:", error);
+          setError(true);
+          setLoading(false);
+        }
+      }
+    };
 
-  const handleError = () => {
-    setLoading(false);
-    setError(true);
-  };
+    loadVideo();
 
+    return () => {
+      if (videoRef.current) {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
+    };
+  }, [content.video]);
 
   return (
     <div className='fixed top-0 inset-0 z-50 flex items-center justify-center bg-black/50 h-screen Scroller bg-opacity-90'>
@@ -67,38 +83,36 @@ function Modal({ onClose, content }: ModalProps) {
           className="w-full mb-3 rounded-xl"
         />
       
-      {loading && !error && (
-        <div className="flex items-center rounded-xl h-40 w-full justify-center">
-          <div className="text-neutral-500">Loading...</div>
-        </div>
-      )}
-      {error ? (
-        <div className="flex items-center justify-center h-full text-neutral-500">
-          Video failed to load
-        </div>
-      ) : (
-        <video
-          loop
-          muted
-          autoPlay
-          playsInline
-          preload="metadata"
-          className="w-full rounded-xl h-auto pointer-events-none"
-          onLoadedData={handleLoadedData}
-          onError={handleError}
-        >
-          <source type="video/mp4" src={content.video} />
-          Your browser does not support the video tag.
-        </video>
-      )}
+        {loading && !error && (
+          <div className="flex items-center rounded-xl h-40 w-full justify-center">
+            <div className="text-neutral-500">Loading...</div>
+          </div>
+        )}
+        {error ? (
+          <div className="flex items-center justify-center h-full text-neutral-500">
+            Video failed to load
+          </div>
+        ) : (
+          <video
+            ref={videoRef}
+            loop
+            muted
+            playsInline
+            preload="auto"
+            className="w-full rounded-xl h-auto pointer-events-none"
+          >
+            <source type="video/mp4" src={content.video} />
+            Your browser does not support the video tag.
+          </video>
+        )}
          
         <p className="text-md md:text-lg mb-3 mt-5 text-gray-300">
           {content.description}
-          </p>
+        </p>
        
-         <p className="text-md mb-5 md:text-lg mt-5 text-gray-300">
+        <p className="text-md mb-5 md:text-lg mt-5 text-gray-300">
           {content.footer}
-         </p>
+        </p>
         {showButtons && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -108,8 +122,8 @@ function Modal({ onClose, content }: ModalProps) {
           >
             <Button link="/"><FiGithub size="22" /></Button>
             <Button link="/">
-            <div className="flex justify-center items-center gap-1">
-              Live <FaLocationArrow size="14" />
+              <div className="flex justify-center items-center gap-1">
+                Live <FaLocationArrow size="14" />
               </div>
             </Button>
           </motion.div>
@@ -119,10 +133,8 @@ function Modal({ onClose, content }: ModalProps) {
   );
 }
 
-
 export default function Projects() {
   const [activeModal, setActiveModal] = useState(null);
-
 
   const openModal = (project: any) => {
     setActiveModal(project);
@@ -144,50 +156,50 @@ export default function Projects() {
 
   return (
     <>
-    <div className="font-[family-name:var(--font-geist-sans)] p-5 flex justify-center ">
-     <div className="w-full max-w-6xl">
+      <div className="font-[family-name:var(--font-geist-sans)] p-5 flex justify-center ">
+        <div className="w-full max-w-6xl">
           <h2 className="text-3xl mb-7 tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-neutral-300 to-neutral-900 sm:text-4xl">
             Projects
           </h2>
           <div className="h-[1px] mb-10 w-full bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-900"></div>
     
-      <div className="grid grid-cols-1 gap-8 mx-auto max-w-6xl w-full md:grid-cols-2">
-        {projects.map((project) => (
-          <Card key={project.id}>
-            <article
-              className="relative w-full h-full p-2 cursor-pointer"
-              onClick={() => openModal(project)}
-            >
-              <div className="flex items-center justify-between gap-2">
-                <div className="text-xs flex w-full justify-between text-zinc-100 mb-5">
-                  <span className="flex gap-1 text-transparent bg-clip-text bg-gradient-to-r from-neutral-200 to-neutral-900 group-hover:text-zinc-300 items-start text-lg">
-                  {project.title}
-                  </span>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 gap-8 mx-auto max-w-6xl w-full md:grid-cols-2">
+            {projects.map((project) => (
+              <Card key={project.id}>
+                <article
+                  className="relative w-full h-full p-2 cursor-pointer"
+                  onClick={() => openModal(project)}
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="text-xs flex w-full justify-between text-zinc-100 mb-5">
+                      <span className="flex gap-1 text-transparent bg-clip-text bg-gradient-to-r from-neutral-200 to-neutral-900 group-hover:text-zinc-300 items-start text-lg">
+                        {project.title}
+                      </span>
+                    </div>
+                  </div>
 
-              <Image
-                alt={project.title}
-                src={project.img || placeholder}
-                className="object-cover pointer-events-none rounded-lg z-0 w-full"
-                width={1080}
-                height={640}
-                quality={85}
-                priority
-              />
-              <p className="mt-4 overflow-hidden line-clamp-2 leading-8 duration-150 text-zinc-400 group-hover:text-zinc-300">
-                {project.description}
-              </p>
-            </article>
-          </Card>
-        ))}
-      </div>
+                  <Image
+                    alt={project.title}
+                    src={project.img || placeholder}
+                    className="object-cover pointer-events-none rounded-lg z-0 w-full"
+                    width={1080}
+                    height={640}
+                    quality={85}
+                    priority
+                  />
+                  <p className="mt-4 overflow-hidden line-clamp-2 leading-8 duration-150 text-zinc-400 group-hover:text-zinc-300">
+                    {project.description}
+                  </p>
+                </article>
+              </Card>
+            ))}
+          </div>
 
-      {activeModal && (
-        <Modal onClose={closeModal} content={activeModal} />
-      )}
+          {activeModal && (
+            <Modal onClose={closeModal} content={activeModal} />
+          )}
         </div> 
-        </div>
+      </div>
     </>
   );
 }
