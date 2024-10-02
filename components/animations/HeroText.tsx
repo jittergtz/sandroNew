@@ -7,6 +7,8 @@ interface AnimatedTextProps {
   text: string;
 }
 
+
+
 const AnimatedText: React.FC<AnimatedTextProps> = ({ text }) => {
   const words = text.split(' '); // Split the text into words
 
@@ -62,17 +64,17 @@ const HeroText: React.FC = () => {
         type: 'spring',
         damping: 12,
         stiffness: 100,
-        delay: 0.5, // Add a delay to start the button animation after the text
+        delay: 0.5, 
       },
     },
   };
 
   return (
     <div className='absolute m-4 p-1 rounded-xl md:left-5 top-28 max-w-full md:max-w-[80%]'>
-      <h1 className='rounded-xl md:mb-4 text-5xl md:text-8xl text-neutral-100/70 break-words'>
+      <h1 className=" rounded-xl md:mb-4 text-5xl md:text-8xl text-neutral-100/70 break-words">
         <AnimatedText text="Hey Sandro here" />
       </h1>
-      <div className='md:text-xl'>
+      <div className='md:text-xl text-white'>
         <AnimatedText text="I'm a Frontend Engineer with great interest in design." />
       </div>
       <div className='mt-10 flex flex-col gap-2'>

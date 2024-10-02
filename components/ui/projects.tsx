@@ -24,7 +24,7 @@ type ModalProps = {
 
 function Modal({ onClose, content }: ModalProps) {
   const [showButtons, setShowButtons] = useState(false);
-  const placeholder = "https://utfs.io/f/mQNDgQBdulFSYrcfiLGCfIoZlwKa7ObVEykHUeWuxBDidcPr";
+  const placeholder = "https://utfs.io/f/mQNDgQBdulFS4w4y3KhjZhbci2Rdwymlk8P95xtBXLvCKuQr";
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -66,13 +66,13 @@ function Modal({ onClose, content }: ModalProps) {
         onAnimationComplete={() => setShowButtons(true)}
         className='relative p-5 backdrop-blur-xl m-2 max-w-[750px] w-full max-h-[70vh] lg:max-h-[85vh] h-full overflow-y-auto overflow-x-hidden border border-neutral-600 rounded-xl'
       >
-        <div className="sticky top-0 flex justify-end">
-          <button onClick={onClose} className="p-1 bg-white/10 backdrop-blur-xl rounded-full">
+        <div className="sticky top-0  flex justify-end">
+          <button onClick={onClose} className="p-1 z-50 bg-white/10 backdrop-blur-xl rounded-full">
             <IoIosClose size={26} className='text-white/70' />
           </button>
         </div>
 
-        <h2 className="text-lg md:text-3xl text-neutral-200 tracking-tight mb-4">
+        <h2 className="text-lg top-0 md:text-3xl text-neutral-200 tracking-tight mb-4">
           {content.title}
         </h2>
         <Image
@@ -80,30 +80,34 @@ function Modal({ onClose, content }: ModalProps) {
           width={600}
           height={400}
           alt="project image"
-          className="w-full mb-3 rounded-xl"
-        />
-      
-        {loading && !error && (
-          <div className="flex items-center rounded-xl h-40 w-full justify-center">
-            <div className="text-neutral-500">Loading...</div>
-          </div>
-        )}
-        {error ? (
-          <div className="flex items-center justify-center h-full text-neutral-500">
-            Video failed to load
-          </div>
-        ) : (
-          <video
-            ref={videoRef}
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="w-full rounded-xl h-auto pointer-events-none"
-          >
-            <source type="video/mp4" src={content.video} />
-            Your browser does not support the video tag.
-          </video>
+          className="w-full mb-3 max-h-80 object-cover rounded-xl"
+        /> 
+    
+    {content.video && (
+          <>
+            {loading && !error && (
+              <div className="flex items-center rounded-xl h-40 w-full justify-center">
+                <div className="text-neutral-500">Loading...</div>
+              </div>
+            )}
+            {error ? (
+              <div className="flex items-center justify-center h-full text-neutral-500">
+                Video failed to load
+              </div>
+            ) : (
+              <video
+                ref={videoRef}
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="w-full rounded-xl h-auto pointer-events-none"
+              >
+                <source type="video/mp4" src={content.video} />
+                Your browser does not support the video tag.
+              </video>
+            )}
+          </>
         )}
          
         <p className="text-md md:text-lg mb-3 mt-5 text-gray-300">
@@ -152,7 +156,7 @@ export default function Projects() {
     };
   }, []);
 
-  const placeholder =  "https://utfs.io/f/mQNDgQBdulFSbgVPooiQAJx5dsog9iEOYch1PnqFGKeyar7I"
+  const placeholder =  "https://utfs.io/f/mQNDgQBdulFS4w4y3KhjZhbci2Rdwymlk8P95xtBXLvCKuQr"
 
   return (
     <>
@@ -163,7 +167,7 @@ export default function Projects() {
           </h2>
           <div className="h-[1px] mb-10 w-full bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-900"></div>
     
-          <div className="grid grid-cols-1 gap-8 mx-auto max-w-6xl w-full md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-8 mx-auto max-w-6xl w-full sm:grid-cols-2">
             {projects.map((project) => (
               <Card key={project.id}>
                 <article
@@ -171,8 +175,8 @@ export default function Projects() {
                   onClick={() => openModal(project)}
                 >
                   <div className="flex items-center justify-between gap-2">
-                    <div className="text-xs flex w-full justify-between text-zinc-100 mb-5">
-                      <span className="flex gap-1 text-transparent bg-clip-text bg-gradient-to-r from-neutral-200 to-neutral-900 group-hover:text-zinc-300 items-start text-lg">
+                    <div className="text-xs flex w-full justify-between text-zinc-100 mb-3">
+                      <span className="flex mt-1 gap-1 text-transparent bg-clip-text bg-gradient-to-r from-neutral-200 to-neutral-400 group-hover:text-zinc-300 items-start text-lg">
                         {project.title}
                       </span>
                     </div>
@@ -181,13 +185,13 @@ export default function Projects() {
                   <Image
                     alt={project.title}
                     src={project.img || placeholder}
-                    className="object-cover pointer-events-none rounded-lg z-0 w-full"
+                    className="object-cover max-h-64 md:max-h-72 pointer-events-none rounded-lg z-0 w-full"
                     width={1080}
                     height={640}
                     quality={85}
                     priority
                   />
-                  <p className="mt-4 overflow-hidden line-clamp-2 leading-8 duration-150 text-zinc-400 group-hover:text-zinc-300">
+                  <p className=" mt-2 overflow-hidden line-clamp-2 leading-8 duration-150 text-zinc-400 group-hover:text-zinc-300">
                     {project.description}
                   </p>
                 </article>

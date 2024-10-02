@@ -10,7 +10,7 @@ function Hero() {
         <Spliner/>
 
     
-         <HeroText/>
+        <HeroText/>
        
 
         
