@@ -16,9 +16,11 @@ type ModalProps = {
   content: {
     title: string;
     img?: string;
+    imgb?: string;
     description: string;
     video?: string;
     footer?: string;
+    link?: string;
   };
 };
 
@@ -109,6 +111,17 @@ function Modal({ onClose, content }: ModalProps) {
             )}
           </>
         )}
+      
+       {content.imgb &&(
+          <Image
+          src={content.imgb || placeholder}
+          width={600}
+          height={400}
+          alt="project image"
+          className="w-full mb-3 max-h-80 object-cover rounded-xl"
+        /> 
+       )}
+       
          
         <p className="text-md md:text-lg mb-3 mt-5 text-gray-300">
           {content.description}
@@ -125,11 +138,13 @@ function Modal({ onClose, content }: ModalProps) {
             className="sticky bottom-0 flex gap-2"
           >
             <Button link="/"><FiGithub size="22" /></Button>
-            <Button link="/">
+            {content.link && (
+            <Button link={content.link }>
               <div className="flex justify-center items-center gap-1">
                 Live <FaLocationArrow size="14" />
               </div>
             </Button>
+            )}
           </motion.div>
         )}
       </motion.div>
@@ -156,7 +171,7 @@ export default function Projects() {
     };
   }, []);
 
-  const placeholder =  "https://utfs.io/f/mQNDgQBdulFS4w4y3KhjZhbci2Rdwymlk8P95xtBXLvCKuQr"
+  const placeholder =  "/sle.webp"
 
   return (
     <>

@@ -3,18 +3,16 @@ import React from 'react'
 import { IoMdContact } from 'react-icons/io';
 
 type ButtonProps = {
-    link: string;
+    link: any;
     children: React.ReactNode
   };
   
 
 function Button({ link, children}: ButtonProps) {
   return (
- <button className='p-1.5 md:p-2.5 flex duration-700 hover:shadow-[inset_0_0px_27px_10px_rgb(40,40,40)] justify-center items-center gap-1 w-full rounded-xl  text-neutral-400 bg-black/10 font-medium text-lg  backdrop-blur-xl border border-neutral-800'>
-   <Link href={link}>
-    {children}
-    </Link>
-</button>
+    <Link href={link} className='p-1.5 md:p-2.5 flex duration-300 hover:shadow-[inset_0_0px_27px_10px_rgb(40,40,40)] justify-center items-center gap-1 w-full rounded-xl  text-neutral-400 bg-black/10 font-medium text-lg  backdrop-blur-xl border border-neutral-800'>
+   {children}
+   </Link>
   )
 }
 

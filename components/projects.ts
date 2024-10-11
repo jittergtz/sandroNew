@@ -2,16 +2,18 @@ interface project {
    title: string,
    description: string,
    img: string,
+   imgb?: string,
    id: number,
    video?: string,
    footer?: string,
+   link?: string,
 }
 
 export const projects: project[] = [
     {
       title: "Volume",
       description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-      img: "https://utfs.io/f/mQNDgQBdulFSzQUrDypo0WZHB79xgyeli6sfAV2bCURFL3PJ",
+      img: "/Volume LP.webp",
       id: 1,
       video: "",
       footer: "Lorem ipsum dolor consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua"
@@ -20,9 +22,11 @@ export const projects: project[] = [
     {
       title: "Waitlist",
       description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
-      img: "https://utfs.io/f/mQNDgQBdulFS3wTVNTerbmGSBwzJo4jVUqNlMHcFe937i0An",
+      img: "/emailcover.webp",
+      imgb: "/badgewaitlist.webp",
       id: 2,
       video: "",
+      link: "https://email-waitlist-eight.vercel.app/",
 
       
     },
