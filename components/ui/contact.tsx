@@ -22,13 +22,13 @@ const socials = [
 
 export default function Contact() {
 	return (
-		<div className='flex flex-col items-center gap-5'>
+		<div className='flex flex-col w-full overflow-hidden  relative items-center gap-5'>
 
 			<div className=" flex flex-col gap-10  items-center justify-center px-4 mx-auto">
       <h1 className='text-3xl mt-20 text-center  text-transparent bg-clip-text bg-gradient-to-b from-zinc-200 to-zinc-500/70'>
         Contact
         </h1>
-				<div className="grid w-96  sm:w-auto grid-cols-1 gap-8 mx-auto mt-32 sm:mt-0 sm:grid-cols-2 lg:gap-16">
+				<div className="grid  sm:w-auto grid-cols-1 gap-8 mx-auto mt-32 sm:mt-0 sm:grid-cols-2 lg:gap-16">
     
 					{socials.map((s, i) => (
 						<Card key={i}>
