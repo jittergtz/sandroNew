@@ -3,7 +3,7 @@ import React from 'react'
 import { IoMdContact } from 'react-icons/io';
 
 type ButtonProps = {
-    link: any;
+    link: string;
     children: React.ReactNode
   };
   
