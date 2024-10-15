@@ -200,9 +200,9 @@ export default function Projects() {
                   <Image
                     alt={project.title}
                     src={project.img || placeholder}
-                    className="object-cover max-h-64 md:max-h-72 pointer-events-none rounded-lg z-0 w-full"
+                    className="object-cover h-64 lg:h-80 pointer-events-none rounded-lg z-0 "
                     width={1080}
-                    height={640}
+                    height={460}
                     quality={85}
                     priority
                   />

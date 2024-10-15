@@ -5,7 +5,7 @@ import HeroText from '../animations/HeroText'
 
 function Hero() {
   return (
-    <div className='h-[100vh] flex justify-center items-center w-full'>
+    <div className='h-[100vh] bg-black flex justify-center items-center w-full'>
         <div className='max-w-7xl w-full relative h-full  '>
         <Spliner/>
 
