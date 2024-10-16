@@ -38,7 +38,7 @@ export default function RootLayout({
       src={"/sandro2.svg"}
       width={200}
       height={200}
-      alt="sandro footer"
+      alt="sandro footer cover"
       className="w-full pointer-events-none"/>
       </div>
       </body>
