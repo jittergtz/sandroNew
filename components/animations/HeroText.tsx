@@ -71,7 +71,7 @@ const HeroText: React.FC = () => {
 
   return (
     <div className='absolute m-4 p-1 rounded-xl md:left-5 top-28 max-w-full md:max-w-[80%]'>
-      <h1 className=" rounded-xl md:mb-4 text-5xl md:text-8xl text-neutral-100/70 break-words">
+      <h1 className=" rounded-xl md:mb-4 text-5xl md:text-8xl text-neutral-100/80 bg-black/20 break-words">
         <AnimatedText text="Hey Sandro here" />
       </h1>
       <div className='md:text-xl text-white'>

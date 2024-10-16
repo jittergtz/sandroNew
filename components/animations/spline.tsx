@@ -2,7 +2,7 @@ import Spline from '@splinetool/react-spline/next';
 
 export default function Spliner() {
   return (
-    <main className=' relative h-full w-full '>
+    <main className=' relative z-0 pointer-events-none h-full w-full '>
       <Spline 
         scene="https://prod.spline.design/QvknkQ7EhSdcT9rC/scene.splinecode" 
       />
