@@ -3,7 +3,6 @@ import React from 'react'
 import { Github, Mail } from "lucide-react";
 import { Card } from './card';
 import Link from 'next/link';
-import Logo from '../animations/bottomlogo';
 
 const socials = [
 
