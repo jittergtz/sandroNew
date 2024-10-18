@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Image from "next/image";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,14 +32,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#000000]`}
       >
         {children}
-        <div className="w-full mt-20">
-      <Image
-      src={"/sandro2.svg"}
-      width={200}
-      height={200}
-      alt="sandro footer cover"
-      className="w-full pointer-events-none"/>
-      </div>
       </body>
     </html>
   );

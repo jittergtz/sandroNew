@@ -3,6 +3,7 @@ import React from 'react'
 import { Github, Mail } from "lucide-react";
 import { Card } from './card';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const socials = [
 
@@ -56,7 +57,14 @@ export default function Contact() {
 						</Card>
 					))}
 				</div>
-			</div>     
+			</div>  
+
+			<Image
+			src={"/chrome.jpg"}
+			alt='cover'
+			width={5760}
+			height={1912}
+			className='bg-cover pointer-events-none'/>   
 		</div>
 	);
 }
