@@ -1,6 +1,6 @@
 import { ReactElement } from "react"
 import { FiFigma } from "react-icons/fi";
-import { SiTypescript, SiDocker, SiSpline, SiThreedotjs, SiTailwindcss } from 'react-icons/si';
+import { SiTypescript, SiDocker, SiThreedotjs, SiTailwindcss } from 'react-icons/si';
 
 interface stack {
     title: string,
